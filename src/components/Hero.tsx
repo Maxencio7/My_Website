@@ -21,13 +21,20 @@ const Hero = () => {
 
   return (
     <section className="relative h-screen">
-      <div className="absolute inset-0 bg-cover bg-center transition-all duration-1000" style={{ backgroundImage: `url(${processedImage})` }}>
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-all duration-1000" 
+        style={{ 
+          backgroundImage: `url(${processedImage})`, 
+          backgroundSize: 'cover', 
+          backgroundPosition: 'center' 
+        }}
+      >
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center z-10"
           >
             <h1 className="text-5xl font-bold mb-6 text-[#00d2ff]">Hello, I'm Maxencio</h1>
             <p className="text-xl text-gray-300 mb-10">
