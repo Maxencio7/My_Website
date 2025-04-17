@@ -1,10 +1,27 @@
 
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { processImage } from "../utils/imageProcessor";
 
 const Hero = () => {
+  const [processedImage, setProcessedImage] = useState<string>("/prof.jpeg");
+
+  useEffect(() => {
+    const applyImageEffect = async () => {
+      try {
+        const processed = await processImage("/prof.jpeg");
+        setProcessedImage(processed);
+      } catch (error) {
+        console.error("Error processing image:", error);
+      }
+    };
+
+    applyImageEffect();
+  }, []);
+
   return (
     <section className="relative h-screen">
-      <div className="absolute inset-0 bg-[url('/prof.jpeg')] bg-cover bg-center">
+      <div className="absolute inset-0 bg-cover bg-center transition-all duration-1000" style={{ backgroundImage: `url(${processedImage})` }}>
         <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}

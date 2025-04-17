@@ -6,20 +6,23 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      image: "/image.jpeg",
+      image: "/lovable-uploads/a7a1969b-efec-482e-a623-11819f346ede.png",
       title: "Startup Project",
+      description: "Modern landing page with space theme",
       link: "/demo/startup"
     },
     {
       id: 2,
-      image: "/port.png",
-      title: "Portfolio Project",
+      image: "/lovable-uploads/9aff5fd5-7b6c-43a7-9951-42fada893526.png",
+      title: "Influencer Conference",
+      description: "Creative conference website design",
       link: "/demo/portfolio"
     },
     {
       id: 3,
-      image: "/ecom.jpg",
+      image: "/lovable-uploads/fd7d4513-b4bb-4d22-8bc0-bd1033cf0e5a.png",
       title: "E-commerce Project",
+      description: "Modern furniture shopping experience",
       link: "/demo/ecommerce"
     }
   ];
@@ -48,12 +51,12 @@ const Projects = () => {
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-[#00d2ff] mb-2">{project.title}</h3>
-                  <p className="text-gray-400">Click to view demo</p>
+                  <p className="text-gray-400">{project.description}</p>
                 </div>
               </motion.div>
             </Link>
