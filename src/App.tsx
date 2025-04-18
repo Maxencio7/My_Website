@@ -1,6 +1,6 @@
 
 import { Toaster } from "@/components/ui/sonner";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Demo from "./pages/Demo";
 import StartupDemo from "./pages/StartupDemo";

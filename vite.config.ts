@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: './', // This makes paths relative, which works better with GitHub Pages
+  base: '/My_Website/', // This makes paths relative to your repo name
 
   plugins: [
     react(),
