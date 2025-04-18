@@ -1,3 +1,4 @@
+
 name: Deploy to GitHub Pages
 
 on:
@@ -27,10 +28,14 @@ jobs:
       # Build the project
       - name: Build the project
         run: npm run build
+        env:
+          NODE_ENV: production
 
       # Deploy to GitHub Pages using peaceiris/actions-gh-pages
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
           publish_dir: ./dist  # The directory where the built files are located
+          force_orphan: true  # Creates a new orphan branch for the deployment
+
