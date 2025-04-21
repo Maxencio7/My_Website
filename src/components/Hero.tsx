@@ -10,11 +10,11 @@ const Hero = () => {
     const applyImageEffect = async () => {
       try {
         // Use local file for reliable loading
-        const processed = await processImage("./prof.jpeg");
+        const processed = await processImage("prof.jpeg");
         setProcessedImage(processed);
       } catch (error) {
         console.error("Error processing image:", error);
-        setProcessedImage("/lovable-uploads/portrait.png");
+        setProcessedImage("prof.jpeg");
       }
     };
 
