@@ -1,4 +1,5 @@
-import { ShieldCheck, Search, Wrench, Network, FileLock, HardDrive, Cloud, Lock, Activity, Users } from "lucide-react";
+
+import { ShieldCheck, Search, Wrench, Network, FileLock, HardDrive, Cloud, Activity, Users } from "lucide-react";
 
 const services = [
   {
@@ -19,7 +20,7 @@ const services = [
     title: "IT Troubleshooting",
     icon: Wrench,
     description: `Assistance diagnosing and resolving common IT issues: hardware, software, and network connectivity. Solutions for performance issues, crashes, or malware problems.`,
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    image: "/lovable-uploads/placeholder-1581091226825-a6a2a5aee158.jpg",
     alt: "Woman troubleshooting laptop computer"
   },
   {
@@ -77,31 +78,33 @@ const Services = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg animate-fade-in">Services Offered</h2>
         <p className="max-w-2xl mx-auto mb-12 text-center text-lg text-gray-300 animate-fade-in">
-          Cybersecurity & IT solutions for small businesses and individuals —
-          <span className="font-semibold text-[#00d2ff]">protect, optimize, and empower</span> your digital assets.
+          <span className="font-semibold text-[#00d2ff]">Cybersecurity and IT Services for Small Businesses and Individuals</span>
         </p>
-
-        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-10 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ title, description, icon: Icon, image, alt }, i) => (
             <div
               key={title}
-              className="bg-[#181C25]/90 rounded-2xl shadow-lg border border-[#232336]/60 flex flex-col hover:scale-105 transition-transform duration-300 animate-fade-in group relative overflow-hidden"
-              style={{ minHeight: 420 }}
+              className="bg-[#181C25]/90 rounded-3xl shadow-2xl border border-[#232336]/60 flex flex-col hover:scale-105 transition-transform duration-300 animate-fade-in group relative overflow-hidden"
+              style={{ minHeight: 420, maxWidth: 430, margin: "0 auto" }}
             >
               {/* Service Image */}
               <img
                 src={image}
                 alt={alt}
                 loading="lazy"
-                className="h-40 w-full object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500"
+                className="h-48 w-full object-cover rounded-t-3xl group-hover:scale-105 transition-transform duration-500 border-b-4 border-[#00d2ff]/40"
+                onError={(e) => {
+                  // fallback to placeholder if the Unsplash image doesn't load
+                  e.currentTarget.src = "/lovable-uploads/placeholder-1581091226825-a6a2a5aee158.jpg";
+                }}
               />
               {/* Icon and Content */}
-              <div className="flex-1 flex flex-col items-center px-6 py-6">
-                <div className="bg-gradient-to-br from-[#00d2ff] to-[#8B5CF6] text-white rounded-xl p-3 shadow-md z-10 -mt-12 mb-3 border-2 border-white/10">
-                  <Icon size={32} />
+              <div className="flex-1 flex flex-col items-center px-7 py-7">
+                <div className="bg-gradient-to-br from-[#00d2ff] to-[#8B5CF6] text-white rounded-xl p-4 shadow-md z-10 -mt-16 mb-4 border-2 border-white/10">
+                  <Icon size={38} />
                 </div>
-                <h3 className="text-xl font-semibold mb-2 text-white drop-shadow">{title}</h3>
-                <p className="text-gray-300 text-base">{description}</p>
+                <h3 className="text-2xl font-semibold mb-2 text-white drop-shadow text-center">{title}</h3>
+                <p className="text-gray-300 text-base text-center">{description}</p>
               </div>
             </div>
           ))}
