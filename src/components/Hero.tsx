@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { processImage } from "../utils/imageProcessor";
 
 const Hero = () => {
-  const [processedImage, setProcessedImage] = useState<string>("prof.jpeg");
+  const [processedImage, setProcessedImage] = useState<string>("./prof.jpeg");
 
   useEffect(() => {
     const applyImageEffect = async () => {
       try {
         // Use local file for reliable loading
-        const processed = await processImage("prof.jpeg");
+        const processed = await processImage("./prof.jpeg");
         setProcessedImage(processed);
       } catch (error) {
         console.error("Error processing image:", error);
-        setProcessedImage("prof.jpeg");
+        setProcessedImage("./prof.jpeg");
       }
     };
 
@@ -40,7 +40,7 @@ const Hero = () => {
           >
             {/* Avatar */}
             <img
-              src="prof.jpeg"
+              src="./prof.jpeg"
               alt="Portrait of Maxencio"
               className="w-40 h-40 object-cover rounded-full mx-auto mb-6 border-4 border-[#00d2ff] shadow-lg"
               loading="eager"
