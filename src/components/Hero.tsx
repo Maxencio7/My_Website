@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { processImage } from "../utils/imageProcessor";
 
 const Hero = () => {
-  const [processedImage, setProcessedImage] = useState<string>("/lovable-uploads/portrait.png");
+  const [processedImage, setProcessedImage] = useState<string>("prof.jpeg");
 
   useEffect(() => {
     const applyImageEffect = async () => {
@@ -40,7 +40,7 @@ const Hero = () => {
           >
             {/* Avatar */}
             <img
-              src="/lovable-uploads/portrait.png"
+              src="prof.jpeg"
               alt="Portrait of Maxencio"
               className="w-40 h-40 object-cover rounded-full mx-auto mb-6 border-4 border-[#00d2ff] shadow-lg"
               loading="eager"
