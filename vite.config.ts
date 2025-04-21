@@ -18,6 +18,12 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
 
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    sourcemap: true,
+  },
+
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

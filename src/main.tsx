@@ -4,9 +4,10 @@ import App from './App.tsx'
 import './index.css'
 
 // Create root and render app
-const root = document.getElementById("root");
-if (root) {
-  createRoot(root).render(<App />);
+const rootElement = document.getElementById("root");
+if (rootElement) {
+  const root = createRoot(rootElement);
+  root.render(<App />);
 } else {
-  console.error("Root element not found!");
+  console.error("Root element not found! Check if the DOM is properly loaded.");
 }
