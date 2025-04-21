@@ -20,7 +20,7 @@ const services = [
     title: "IT Troubleshooting",
     icon: Wrench,
     description: `Assistance diagnosing and resolving common IT issues: hardware, software, and network connectivity. Solutions for performance issues, crashes, or malware problems.`,
-    image: "/lovable-uploads/placeholder-1581091226825-a6a2a5aee158.jpg",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
     alt: "Woman troubleshooting laptop computer"
   },
   {
@@ -55,7 +55,7 @@ const services = [
     title: "Incident Response Planning",
     icon: Activity,
     description: `Development of incident response strategies. Staff training for breaches and emergencies.`,
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=600&q=80",
     alt: "Incident response training session"
   },
   {
