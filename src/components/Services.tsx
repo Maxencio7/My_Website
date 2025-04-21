@@ -1,69 +1,116 @@
 
-import { motion } from "framer-motion";
+import { ShieldCheck, Search, Wrench, Network, FileLock, HardDrive, CloudLock, Activity, Users } from "lucide-react";
+
+const services = [
+  {
+    title: "Cybersecurity Audits",
+    icon: ShieldCheck,
+    description: `Comprehensive security assessments to identify vulnerabilities in your systems. Recommendations for improving security protocols and protecting sensitive data.`,
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
+    alt: "Cybersecurity audit concept - digital code on a screen"
+  },
+  {
+    title: "Penetration Testing (Ethical Hacking)",
+    icon: Search,
+    description: `Simulated attacks to identify weaknesses in your network, systems, and applications. Detailed reports on findings and mitigation strategies.`,
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=600&q=80",
+    alt: "Robot and coding interface symbolizing hacking"
+  },
+  {
+    title: "IT Troubleshooting",
+    icon: Wrench,
+    description: `Assistance diagnosing and resolving common IT issues: hardware, software, and network connectivity. Solutions for performance issues, crashes, or malware problems.`,
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    alt: "Woman troubleshooting laptop computer"
+  },
+  {
+    title: "Network Security Configuration",
+    icon: Network,
+    description: `Secure setup of firewalls, routers, and VPNs. Network hardening and data protection recommendations.`,
+    image: "https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=600&q=80",
+    alt: "Group examining secure network setup"
+  },
+  {
+    title: "Data Encryption Services",
+    icon: FileLock,
+    description: `Secure encryption methods for sensitive data at rest and in transit. Best practices for storage and sharing.`,
+    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&w=600&q=80",
+    alt: "Encrypted data on laptop"
+  },
+  {
+    title: "Windows OS Support",
+    icon: HardDrive,
+    description: `Troubleshooting for Windows: system crashes, updates, performance problems. Regular updates and patch management guidance.`,
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=600&q=80",
+    alt: "Monitor displaying system diagnostics"
+  },
+  {
+    title: "Cloud Security Solutions",
+    icon: CloudLock,
+    description: `Protect cloud infrastructure and data. Secure cloud backups and disaster recovery plans.`,
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
+    alt: "Cloud security illustration"
+  },
+  {
+    title: "Incident Response Planning",
+    icon: Activity,
+    description: `Development of incident response strategies. Staff training for breaches and emergencies.`,
+    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
+    alt: "Incident response training session"
+  },
+  {
+    title: "Employee Cybersecurity Awareness Training",
+    icon: Users,
+    description: `Training for staff to prevent phishing, social engineering, and poor security practices. Security culture improvements.`,
+    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=600&q=80",
+    alt: "Team learning cybersecurity skills"
+  }
+];
 
 const Services = () => {
   return (
-    <section className="py-20 bg-[#121212]">
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto px-6"
-      >
-        <div className="bg-[#1f1f1f] p-8 rounded-2xl shadow-[0_10px_25px_rgba(0,210,255,0.2)] transform perspective-800 hover:rotate-x-2 hover:rotate-y-2 transition-transform duration-500">
-          <h1 className="text-4xl font-bold mb-8 text-[#00d2ff] text-center">My IT & Cybersecurity Services</h1>
-          <p className="text-gray-300 leading-relaxed mb-10">
-            I offer a wide range of services tailored to meet your digital and business needs:
-            cybersecurity audits, network troubleshooting, Windows optimization, printer support,
-            antivirus setup, and general office IT solutions. Whether you're a small business or an
-            individual in need of secure and reliable tech support, I've got you covered.
-          </p>
-          
-          <div className="mb-12">
-            <h2 className="text-2xl font-bold mb-6 text-[#00d2ff]">Download Free & Paid Resources</h2>
-            <div className="flex gap-4 justify-center">
-              <a 
-                href="https://drive.google.com/file/d/1Mvc7RsR6_M8NHy_hSgejNAsWV0NbY3l-/view?usp=sharing"
-                className="px-6 py-3 bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] text-white rounded-lg hover:from-[#3a7bd5] hover:to-[#00d2ff] transition-all duration-300"
-              >
-                Download Free IT Tips PDF
-              </a>
-            </div>
-          </div>
+    <section
+      className="relative py-20 bg-gradient-to-br from-[#121212] via-[#1A1F2C] to-[#2e085f] min-h-[80vh]"
+      id="services"
+    >
+      {/* Decorative background gradient / glass effect */}
+      <div className="absolute inset-0 pointer-events-none select-none" style={{background: "linear-gradient(135deg, #0EA5E9 0%, #8B5CF6 75%, #1A1F2C 100%)", opacity: 0.12, zIndex: 1}} />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg animate-fade-in">Services Offered</h2>
+        <p className="max-w-2xl mx-auto mb-12 text-center text-lg text-gray-300 animate-fade-in">
+          Cybersecurity & IT solutions for small businesses and individuals —
+          <span className="font-semibold text-[#00d2ff]">protect, optimize, and empower</span> your digital assets.
+        </p>
 
-          <div className="bg-[#1f1f1f] p-8 rounded-xl transform perspective-800 hover:rotate-x-2 hover:rotate-y-2 transition-transform duration-500">
-            <h2 className="text-2xl font-bold mb-6 text-[#00d2ff]">Get Custom Recommendations</h2>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="email" className="block text-gray-300 mb-2">Your Email:</label>
-                <input 
-                  type="email" 
-                  id="email" 
-                  required 
-                  className="w-full p-3 bg-[#2a2a2a] rounded-lg border border-gray-700 text-white focus:outline-none focus:border-[#00d2ff]"
-                />
+        <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ title, description, icon: Icon, image, alt }, i) => (
+            <div
+              key={title}
+              className="bg-[#181C25]/90 rounded-2xl shadow-lg border border-[#232336]/60 flex flex-col hover:scale-105 transition-transform duration-300 animate-fade-in group relative overflow-hidden"
+              style={{ minHeight: 420 }}
+            >
+              {/* Service Image */}
+              <img
+                src={image}
+                alt={alt}
+                loading="lazy"
+                className="h-40 w-full object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-500"
+              />
+              {/* Icon and Content */}
+              <div className="flex-1 flex flex-col items-center px-6 py-6">
+                <div className="bg-gradient-to-br from-[#00d2ff] to-[#8B5CF6] text-white rounded-xl p-3 shadow-md z-10 -mt-12 mb-3 border-2 border-white/10">
+                  <Icon size={32} />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 text-white drop-shadow">{title}</h3>
+                <p className="text-gray-300 text-base">{description}</p>
               </div>
-              <div>
-                <label htmlFor="needs" className="block text-gray-300 mb-2">Describe Your IT Issue:</label>
-                <textarea 
-                  id="needs" 
-                  rows={5} 
-                  required 
-                  className="w-full p-3 bg-[#2a2a2a] rounded-lg border border-gray-700 text-white focus:outline-none focus:border-[#00d2ff]"
-                />
-              </div>
-              <button 
-                type="submit"
-                className="w-full py-3 bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] text-white rounded-lg hover:from-[#3a7bd5] hover:to-[#00d2ff] transition-all duration-300"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
+            </div>
+          ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 };
 
 export default Services;
+
