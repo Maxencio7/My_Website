@@ -38,4 +38,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
           publish_dir: ./dist  # The directory where the built files are located
           force_orphan: true  # Creates a new orphan branch for the deployment
-

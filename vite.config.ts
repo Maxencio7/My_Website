@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: '/My_Website/', // This makes paths relative to your repo name
+  base: './', // Change to relative paths for all assets
 
   plugins: [
     react(),
