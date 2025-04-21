@@ -1,5 +1,4 @@
-
-import { ShieldCheck, Search, Wrench, Network, FileLock, HardDrive, CloudLock, Activity, Users } from "lucide-react";
+import { ShieldCheck, Search, Wrench, Network, FileLock, HardDrive, Cloud, Lock, Activity, Users } from "lucide-react";
 
 const services = [
   {
@@ -46,7 +45,7 @@ const services = [
   },
   {
     title: "Cloud Security Solutions",
-    icon: CloudLock,
+    icon: Cloud,
     description: `Protect cloud infrastructure and data. Secure cloud backups and disaster recovery plans.`,
     image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
     alt: "Cloud security illustration"
@@ -113,4 +112,3 @@ const Services = () => {
 };
 
 export default Services;
-
