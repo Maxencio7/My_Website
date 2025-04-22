@@ -48,7 +48,7 @@ const services = [
     title: "Cloud Security Solutions",
     icon: Cloud,
     description: `Protect cloud infrastructure and data. Secure cloud backups and disaster recovery plans.`,
-    image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80",
     alt: "Cloud security illustration"
   },
   {
@@ -62,7 +62,7 @@ const services = [
     title: "Employee Cybersecurity Awareness Training",
     icon: Users,
     description: `Training for staff to prevent phishing, social engineering, and poor security practices. Security culture improvements.`,
-    image: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1573167243872-43c6433b9d40?auto=format&fit=crop&w=600&q=80",
     alt: "Team learning cybersecurity skills"
   }
 ];
@@ -94,8 +94,8 @@ const Services = () => {
                 loading="lazy"
                 className="h-48 w-full object-cover rounded-t-3xl group-hover:scale-105 transition-transform duration-500 border-b-4 border-[#00d2ff]/40"
                 onError={(e) => {
-                  // fallback to placeholder if the Unsplash image doesn't load
-                  e.currentTarget.src = "/lovable-uploads/placeholder-1581091226825-a6a2a5aee158.jpg";
+                  // Fallback to another Unsplash image if the primary one fails
+                  e.currentTarget.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80";
                 }}
               />
               {/* Icon and Content */}

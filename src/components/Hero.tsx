@@ -3,18 +3,21 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { processImage } from "../utils/imageProcessor";
 
+// Use the new portrait image uploaded by the user
+const PORTRAIT_IMAGE = "/lovable-uploads/82a769aa-62e5-4347-8fda-2e9cdf657c01.png";
+
 const Hero = () => {
-  const [processedImage, setProcessedImage] = useState<string>("public/lovable-uploads/portrait.jpeg");
+  const [processedImage, setProcessedImage] = useState<string>(PORTRAIT_IMAGE);
 
   useEffect(() => {
     const applyImageEffect = async () => {
       try {
-        // Use local file for reliable loading
-        const processed = await processImage("public/lovable-uploads/portrait.jpeg");
+        // Use the newly uploaded portrait
+        const processed = await processImage(PORTRAIT_IMAGE);
         setProcessedImage(processed);
       } catch (error) {
         console.error("Error processing image:", error);
-        setProcessedImage("public/lovable-uploads/portrait.jpeg");
+        setProcessedImage(PORTRAIT_IMAGE); // Fallback to original image
       }
     };
 
@@ -40,7 +43,7 @@ const Hero = () => {
           >
             {/* Avatar */}
             <img
-              src="public/lovable-uploads/portrait.jpeg"
+              src={PORTRAIT_IMAGE}
               alt="Portrait of Maxencio"
               className="w-40 h-40 object-cover rounded-full mx-auto mb-6 border-4 border-[#00d2ff] shadow-lg"
               loading="eager"
