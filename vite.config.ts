@@ -22,15 +22,12 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true,
-    // Add minify option to ensure proper build
     minify: 'terser',
-    // Add terser options for better output
     terserOptions: {
       compress: {
-        drop_console: true,  // Remove console logs in production
+        drop_console: mode === 'production',  // Only drop console logs in production
       }
     },
-    // Make sure Vite doesn't choke on dynamic imports
     rollupOptions: {
       output: {
         manualChunks: {
@@ -46,7 +43,6 @@ export default defineConfig(({ mode }) => ({
     },
   },
   
-  // Add optimizeDeps to improve build process
   optimizeDeps: {
     include: ['react', 'react-dom', 'framer-motion'],
     exclude: []
