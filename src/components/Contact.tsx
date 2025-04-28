@@ -4,21 +4,31 @@ import { useState } from "react";
 import { toast } from "sonner";
 
 const Contact = () => {
-  const [showPopup, setShowPopup] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
+    
     try {
+      // Ensure emailjs is properly initialized before using it
+      if (!(window as any).emailjs) {
+        throw new Error("Email service not loaded");
+      }
+      
       await (window as any).emailjs.sendForm(
         "service_2s5qe8m",
         "template_nxbjdln",
         e.currentTarget
       );
+      
       toast.success("Message sent successfully!");
       (e.target as HTMLFormElement).reset();
     } catch (error) {
-      console.error("FAILED...", error);
-      toast.error("Failed to send message.");
+      console.error("Failed to send message:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -63,9 +73,14 @@ const Contact = () => {
             />
             <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] text-white rounded-lg hover:from-[#3a7bd5] hover:to-[#00d2ff] transition-all duration-300"
+              disabled={isSubmitting}
+              className={`w-full py-4 bg-gradient-to-r from-[#00d2ff] to-[#3a7bd5] text-white rounded-lg transition-all duration-300 ${
+                isSubmitting 
+                  ? "opacity-70 cursor-not-allowed" 
+                  : "hover:from-[#3a7bd5] hover:to-[#00d2ff]"
+              }`}
             >
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </motion.div>

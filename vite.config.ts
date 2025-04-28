@@ -6,8 +6,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: './', // Change to relative paths for all assets
-
+  base: './', // Use relative paths for all assets
+  
   plugins: [
     react(),
     mode === 'development' && componentTagger(),
@@ -22,6 +22,22 @@ export default defineConfig(({ mode }) => ({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: true,
+    // Add minify option to ensure proper build
+    minify: 'terser',
+    // Add terser options for better output
+    terserOptions: {
+      compress: {
+        drop_console: true,  // Remove console logs in production
+      }
+    },
+    // Make sure Vite doesn't choke on dynamic imports
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+        },
+      },
+    },
   },
 
   resolve: {
@@ -29,4 +45,10 @@ export default defineConfig(({ mode }) => ({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  
+  // Add optimizeDeps to improve build process
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'framer-motion'],
+    exclude: []
+  }
 }));

@@ -4,37 +4,61 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or your default branch (adjust as needed)
+      - main  # or your default branch
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      # Check out the repository
+      # Check out repository with submodules and history
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          submodules: true
+          fetch-depth: 0
 
-      # Set up Node.js (Adjust node-version as needed)
+      # Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18  # Set the Node.js version you are using
+          node-version: 18
+          cache: 'npm'
 
-      # Install dependencies
+      # Install dependencies with CI flag
       - name: Install dependencies
-        run: npm install
+        run: npm ci
+        
+      # Run security audit
+      - name: Security audit
+        run: npm audit --production
 
       # Build the project
       - name: Build the project
         run: npm run build
         env:
           NODE_ENV: production
+          # Add any other environment variables your build might need
+          
+      # Test the build artifacts
+      - name: Test build
+        run: |
+          if [ ! -d "./dist" ]; then
+            echo "Build failed - dist directory not created"
+            exit 1
+          fi
+          if [ ! -f "./dist/index.html" ]; then
+            echo "Build failed - index.html not created"
+            exit 1
+          fi
 
-      # Deploy to GitHub Pages using peaceiris/actions-gh-pages
+      # Deploy to GitHub Pages with improved configuration
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically provides this token
-          publish_dir: ./dist  # The directory where the built files are located
-          force_orphan: true  # Creates a new orphan branch for the deployment
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy: ${{ github.event.head_commit.message }}'

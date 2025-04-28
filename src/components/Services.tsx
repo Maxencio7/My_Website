@@ -76,32 +76,53 @@ const Services = () => {
       {/* Decorative background gradient / glass effect */}
       <div className="absolute inset-0 pointer-events-none select-none" style={{background: "linear-gradient(135deg, #0EA5E9 0%, #8B5CF6 75%, #1A1F2C 100%)", opacity: 0.12, zIndex: 1}} />
       <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg animate-fade-in">Services Offered</h2>
-        <p className="max-w-2xl mx-auto mb-12 text-center text-lg text-gray-300 animate-fade-in">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 text-center drop-shadow-lg">Services Offered</h2>
+        <p className="max-w-2xl mx-auto mb-12 text-center text-lg text-gray-300">
           <span className="font-semibold text-[#00d2ff]">Cybersecurity and IT Services for Small Businesses and Individuals</span>
         </p>
         <div className="grid gap-10 md:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {services.map(({ title, description, icon: Icon, image, alt }, i) => (
             <div
               key={title}
-              className="bg-[#181C25]/90 rounded-3xl shadow-2xl border border-[#232336]/60 flex flex-col hover:scale-105 transition-transform duration-300 animate-fade-in group relative overflow-hidden"
+              className="bg-[#181C25]/90 rounded-3xl shadow-2xl border border-[#232336]/60 flex flex-col hover:scale-105 transition-transform duration-300 group relative overflow-hidden"
               style={{ minHeight: 420, maxWidth: 430, margin: "0 auto" }}
             >
-              {/* Service Image */}
-              <img
-                src={image}
-                alt={alt}
-                loading="lazy"
-                className="h-48 w-full object-cover rounded-t-3xl group-hover:scale-105 transition-transform duration-500 border-b-4 border-[#00d2ff]/40"
-                onError={(e) => {
-                  // Fallback to another Unsplash image if the primary one fails
-                  e.currentTarget.src = "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80";
-                }}
-              />
+              {/* Service Image with robust error handling */}
+              <div className="h-48 w-full overflow-hidden rounded-t-3xl border-b-4 border-[#00d2ff]/40">
+                <img
+                  src={image}
+                  alt={alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  onError={(e) => {
+                    // Multiple fallbacks for image loading
+                    console.error(`Failed to load image for ${title}`);
+                    const fallbacks = [
+                      "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+                      "https://images.unsplash.com/photo-1550439062-609e1531270e?auto=format&fit=crop&w=600&q=80",
+                      "https://via.placeholder.com/600x400?text=Service"
+                    ];
+                    
+                    // Try next fallback
+                    const currentSrc = e.currentTarget.src;
+                    const fallbackIndex = fallbacks.findIndex(fb => currentSrc.includes(fb));
+                    
+                    if (fallbackIndex === -1) {
+                      e.currentTarget.src = fallbacks[0];
+                    } else if (fallbackIndex < fallbacks.length - 1) {
+                      e.currentTarget.src = fallbacks[fallbackIndex + 1];
+                    } else {
+                      // If all fallbacks fail, use inline SVG as data URI
+                      e.currentTarget.src = "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22600%22%20height%3D%22400%22%20viewBox%3D%220%200%20600%20400%22%20preserveAspectRatio%3D%22none%22%3E%3Crect%20fill%3D%22%23232336%22%20width%3D%22600%22%20height%3D%22400%22%2F%3E%3Ctext%20fill%3D%22%23ffffff%22%20font-family%3D%22sans-serif%22%20font-size%3D%2220%22%20dy%3D%220.35em%22%20text-anchor%3D%22middle%22%20x%3D%22300%22%20y%3D%22200%22%3E" + title + "%3C%2Ftext%3E%3C%2Fsvg%3E";
+                    }
+                  }}
+                />
+              </div>
+              
               {/* Icon and Content */}
               <div className="flex-1 flex flex-col items-center px-7 py-7">
                 <div className="bg-gradient-to-br from-[#00d2ff] to-[#8B5CF6] text-white rounded-xl p-4 shadow-md z-10 -mt-16 mb-4 border-2 border-white/10">
-                  <Icon size={38} />
+                  <Icon size={38} aria-hidden="true" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-2 text-white drop-shadow text-center">{title}</h3>
                 <p className="text-gray-300 text-base text-center">{description}</p>
