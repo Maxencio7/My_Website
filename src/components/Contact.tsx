@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-20 bg-[#1a1a1a]">
+    <section className="py-20 bg-[#1a1a1a]" id="contact">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -56,6 +56,7 @@ const Contact = () => {
               placeholder="Your Name"
               required
               className="w-full p-4 bg-[#1f1f1f] rounded-lg border border-gray-700 text-white focus:outline-none focus:border-[#00d2ff]"
+              aria-label="Your Name"
             />
             <input
               type="email"
@@ -63,6 +64,7 @@ const Contact = () => {
               placeholder="Your Email"
               required
               className="w-full p-4 bg-[#1f1f1f] rounded-lg border border-gray-700 text-white focus:outline-none focus:border-[#00d2ff]"
+              aria-label="Your Email"
             />
             <textarea
               name="message"
@@ -70,6 +72,7 @@ const Contact = () => {
               rows={5}
               required
               className="w-full p-4 bg-[#1f1f1f] rounded-lg border border-gray-700 text-white focus:outline-none focus:border-[#00d2ff]"
+              aria-label="Your Message"
             />
             <button
               type="submit"

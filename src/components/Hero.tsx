@@ -34,7 +34,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative h-screen">
+    <section className="relative h-screen" id="home">
       <div 
         className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
         style={{ 

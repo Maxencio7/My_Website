@@ -9,26 +9,29 @@ const Projects = () => {
       image: "/lovable-uploads/a7a1969b-efec-482e-a623-11819f346ede.png",
       title: "Startup Project",
       description: "Modern landing page with space theme",
-      link: "/demo/startup"
+      link: "/demo/startup",
+      alt: "Space-themed startup landing page design"
     },
     {
       id: 2,
       image: "/lovable-uploads/9aff5fd5-7b6c-43a7-9951-42fada893526.png",
       title: "Influencer Conference",
       description: "Creative conference website design",
-      link: "/demo/portfolio"
+      link: "/demo/portfolio",
+      alt: "Creative conference website design for influencers"
     },
     {
       id: 3,
       image: "/lovable-uploads/fd7d4513-b4bb-4d22-8bc0-bd1033cf0e5a.png",
       title: "E-commerce Project",
       description: "Modern furniture shopping experience",
-      link: "/demo/ecommerce"
+      link: "/demo/ecommerce",
+      alt: "Modern furniture e-commerce website design"
     }
   ];
 
   return (
-    <section className="py-20 bg-[#121212]">
+    <section className="py-20 bg-[#121212]" id="projects">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +41,7 @@ const Projects = () => {
         <h2 className="text-4xl font-bold mb-16 text-[#00d2ff] text-center">My Projects</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
           {projects.map((project) => (
-            <Link to={project.link} key={project.id}>
+            <Link to={project.link} key={project.id} aria-label={`View ${project.title} project`}>
               <motion.div 
                 whileHover={{ 
                   scale: 1.05,
@@ -50,8 +53,9 @@ const Projects = () => {
                 <div className="h-48 w-full overflow-hidden">
                   <img 
                     src={project.image} 
-                    alt={project.title}
+                    alt={project.alt}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                    loading="lazy"
                   />
                 </div>
                 <div className="p-6">
