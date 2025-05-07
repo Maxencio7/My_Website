@@ -1,5 +1,5 @@
 
-name: Deploy to GitHub Pages
+name: Build and Test
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
       - main  # or your default branch
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -55,14 +55,3 @@ jobs:
             echo "Build failed - index.html not created"
             exit 1
           fi
-
-      # Deploy to GitHub Pages with improved configuration
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
-          user_name: 'github-actions[bot]'
-          user_email: 'github-actions[bot]@users.noreply.github.com'
-          commit_message: 'Deploy: ${{ github.event.head_commit.message }}'
