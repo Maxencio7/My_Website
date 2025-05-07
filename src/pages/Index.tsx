@@ -24,9 +24,16 @@ const Index = () => {
 
   return (
     <main className="bg-black min-h-screen">
+      {/* F-Pattern: First horizontal (Hero) */}
       <Hero />
+      
+      {/* F-Pattern: Second horizontal (Services - most important) */}
       <Services />
+      
+      {/* F-Pattern: Vertical scan (Projects) */}
       <Projects />
+      
+      {/* Lower content areas */}
       <About />
       <Contact />
     </main>
