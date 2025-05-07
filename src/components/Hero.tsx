@@ -69,13 +69,26 @@ const Hero = () => {
               Web & App Designer | CLSBB | Aspiring DevSecOps + Ai
             </p>
             
-            {/* Enhanced "See My Work" button */}
+            {/* Enhanced floating button with curved edges */}
             <motion.a 
               href="https://github.com/Maxencio7/" 
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#9b59b6] to-[#3498db] text-white font-bold rounded-lg shadow-xl hover:scale-105 transition-all duration-300 hover:shadow-[0_8px_20px_rgba(155,89,182,0.6)] relative overflow-hidden"
-              whileHover={{ scale: 1.05 }}
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#9b59b6] to-[#3498db] text-white font-bold rounded-full shadow-[0_8px_15px_rgba(0,0,0,0.3)] hover:shadow-[0_15px_30px_rgba(155,89,182,0.6)] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+              whileHover={{ 
+                scale: 1.05,
+                y: -5,
+              }}
+              animate={{ 
+                y: [0, -10, 0],
+              }}
+              transition={{
+                y: {
+                  repeat: Infinity,
+                  duration: 2,
+                  ease: "easeInOut",
+                }
+              }}
               whileTap={{ scale: 0.98 }}
             >
               <span className="relative z-10">See My Work</span>
